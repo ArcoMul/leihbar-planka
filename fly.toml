@@ -1,0 +1,31 @@
+app = "leihbar-planka"
+primary_region = "ams"
+
+[env]
+  BASE_URL = "https://leihbar-planka.fly.dev"
+  DEFAULT_ADMIN_EMAIL = "me@arcomul.nl"
+  DEFAULT_ADMIN_NAME = "Arco"
+  DEFAULT_ADMIN_USERNAME = "arco"
+  REACT_APP_SERVER_BASE_URL = "http://localhost:3000"
+  SMTP_HOST = "live.smtp.mailtrap.io"
+  SMTP_PORT = 587
+  SMTP_SECURE = false
+  SMTP_USER = "api"
+  SMTP_FROM = "Leihbar Köln - Planka <noreply@arcomul.nl>"
+
+[http_service]
+  auto_start_machines = true
+  auto_stop_machines = true
+  force_https = true
+  internal_port = 1337
+  min_machines_running = 0
+  processes = [ "app" ]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "1gb"
+
+[[mounts]]
+  source = 'planka'
+  destination = '/mnt/fly-volume'
